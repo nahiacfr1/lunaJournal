@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://luna-journal.vercel.app/sitemap-index.xml
