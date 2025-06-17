@@ -4,20 +4,32 @@ import Navbar from '../components/Navbar.astro';
 
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
     <title>Iniciar sesión – Luna Journal</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="/firebase-login.js" defer></script>
+    <link rel="stylesheet" href="/auth.css" />
   </head>
-  <body style="
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to bottom, #1e1b2e, #2e2649);
-  color: #f4e2d8;
-  margin: 0;
-  min-height: 100vh;">
 
+  <body>
     <Navbar />
-    <main style="padding: 2rem; text-align: center;">
-      <h1>🔒 Iniciar sesión</h1>
-      <p>Próximamente podrás guardar tus rituales y afirmaciones aquí.</p>
+
+    <main class="auth-main">
+      <section class="auth-box">
+        <h1>🔒 Iniciar sesión</h1>
+        <p>Accede a tu espacio espiritual</p>
+
+        <form id="login-form">
+          <input type="email" id="email" placeholder="Correo electrónico" required />
+          <input type="password" id="password" placeholder="Contraseña" required />
+          <button type="submit">Entrar</button>
+          <p id="error" class="error-msg"></p>
+        </form>
+
+        <p class="alt">¿No tienes cuenta? <a href="#" onclick="toggleRegister()">Regístrate</a></p>
+      </section>
     </main>
   </body>
 </html>
+
+

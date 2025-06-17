@@ -1,0 +1,54 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #1e1b2e, #2e2649);
+  color: #f4e2d8;
+  margin: 0;
+}
+
+.auth-main {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 1rem;
+}
+
+.auth-box {
+  background: #2b2342;
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.auth-box input {
+  display: block;
+  width: 100%;
+  margin: 1rem 0;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+}
+
+.auth-box button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  background: #ffccf2;
+  border: none;
+  border-radius: 8px;
+  color: #2b2342;
+  cursor: pointer;
+}
+
+.auth-box .alt {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.error-msg {
+  color: #ffb3b3;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
