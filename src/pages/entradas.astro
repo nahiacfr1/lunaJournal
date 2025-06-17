@@ -1,0 +1,47 @@
+---
+const entradas = [
+  {
+    titulo: "¿Qué revela la luna sobre tu nacimiento?",
+    descripcion: "Descubre cómo influye la fase de la luna en tu personalidad según el día en que naciste.",
+    url: "/entradas/luna-nacimiento",
+    icono: "🌙",
+  },
+  {
+    titulo: "5 rituales para el solsticio de verano",
+    descripcion: "Prepárate para recibir la nueva estación con energía positiva y claridad.",
+    url: "/entradas/solsticio-verano",
+    icono: "☀️",
+  },
+];
+---
+
+<html lang="es">
+  <head>
+    <title>Entradas – Luna Journal</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body style="margin: 0; background: #11092d; color: #fff; font-family: sans-serif;">
+    <nav style="background: #2b1a4a; padding: 1rem; text-align: center;">
+      <a href="/" style="margin: 0 1rem; color: #fff; text-decoration: none;">Inicio</a>
+      <a href="/rituales" style="margin: 0 1rem; color: #fff; text-decoration: none;">Rituales</a>
+      <a href="/entradas" style="margin: 0 1rem; color: #9f79ff; text-decoration: none;">Entradas</a>
+      <a href="/login" style="margin: 0 1rem; color: #fff; text-decoration: none;">Iniciar sesión</a>
+    </nav>
+
+    <main style="text-align: center; padding: 3rem 1rem;">
+      <h1 style="font-size: 2.5rem; color: #ffe7fa;">🪄 Entradas destacadas</h1>
+      <p style="color: #ccc;">Conecta con la sabiduría espiritual y lunar</p>
+
+      <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 700px; margin: 2rem auto;">
+        {
+          entradas.map(({ titulo, descripcion, url, icono }) => (
+            <a href={url} style="display: block; background: #2a1844; padding: 1.5rem 2rem; border-radius: 1rem; color: #e0c2ff; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.2s;">
+              <h2 style="margin: 0 0 0.5rem 0; font-size: 1.5rem;">{icono} {titulo}</h2>
+              <p style="margin: 0; color: #c6b6e7;">{descripcion}</p>
+            </a>
+          ))
+        }
+      </div>
+    </main>
+  </body>
+</html>

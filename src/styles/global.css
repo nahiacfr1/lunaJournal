@@ -1,0 +1,68 @@
+/* Tipografía base */
+body {
+  font-family: 'Georgia', 'serif';
+  background-color: #f9f4f0;
+  color: #2d1a3c;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+}
+
+/* Títulos */
+h1, h2, h3 {
+  font-family: 'Playfair Display', 'serif';
+  color: #1e1b2e;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Textos generales */
+p {
+  font-size: 1.1rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Links */
+a {
+  color: #845ec2;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Secciones */
+section {
+  padding: 1rem 0;
+  border-bottom: 1px solid #e6dad2;
+}
+
+/* Contenedor principal */
+body > main, body > header, body > footer {
+  max-width: 700px;
+  margin: auto;
+  padding: 1.5rem;
+}
+
+/* Botones (por si usas) */
+button {
+  background-color: #845ec2;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #6b4b9c;
+}
+
+/* Estilo del footer */
+footer {
+  margin-top: 3rem;
+  border-top: 1px solid #ddd;
+  padding-top: 2rem;
+  font-size: 1rem;
+  color: #5e4c5a;
+}
