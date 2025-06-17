@@ -1,66 +1,58 @@
 ---
-import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar.astro';
 
-const [carta, setCarta] = useState(null);
+const cartas = [
+  {
+    nombre: "El Loco",
+    significado: "Representa nuevos comienzos, libertad, aventura y espontaneidad.",
+    consejo: "Confía en el viaje, incluso si no conoces el destino. Atrévete."
+  },
+  {
+    nombre: "La Emperatriz",
+    significado: "Simboliza abundancia, fertilidad y conexión con la naturaleza.",
+    consejo: "Cuida lo que siembras hoy; florecerá con amor y paciencia."
+  },
+  {
+    nombre: "El Ermitaño",
+    significado: "Momento de introspección, guía interna y búsqueda espiritual.",
+    consejo: "Escucha tu silencio. En él está la sabiduría que necesitas."
+  },
+  {
+    nombre: "La Estrella",
+    significado: "Esperanza, inspiración y conexión divina.",
+    consejo: "Confía en que el universo está a tu favor. Todo está fluyendo."
+  },
+  // Añade más cartas aquí cuando quieras (hasta las 78)
+];
 
-useEffect(() => {
-  const guardada = localStorage.getItem('cartaDia');
-  const fechaGuardada = localStorage.getItem('fechaCarta');
-  const hoy = new Date().toISOString().slice(0, 10);
+function obtenerCartaDelDia() {
+  const fecha = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+  const hash = [...fecha].reduce((acc, c) => acc + c.charCodeAt(0), 0);
+  const index = hash % cartas.length;
+  return cartas[index];
+}
 
-  if (guardada && fechaGuardada === hoy) {
-    setCarta(JSON.parse(guardada));
-  }
-}, []);
-
-const obtenerCarta = async () => {
-  const hoy = new Date().toISOString().slice(0, 10);
-
-  const res = await fetch('/cartas_tarot_es.json');
-  const cartas = await res.json();
-  const aleatoria = cartas[Math.floor(Math.random() * cartas.length)];
-
-  localStorage.setItem('cartaDia', JSON.stringify(aleatoria));
-  localStorage.setItem('fechaCarta', hoy);
-
-  setCarta(aleatoria);
-};
+const carta = obtenerCartaDelDia();
 ---
 
 <html lang="es">
   <head>
-    <title>Carta del Día – Luna Journal</title>
     <meta charset="UTF-8" />
+    <title>Carta del Día – Luna Journal</title>
   </head>
-  <body style="
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom, #1e1b2e, #2e2649);
-    color: #f4e2d8;
-    margin: 0;
-    min-height: 100vh;
-  ">
+  <body style="font-family: 'Poppins', sans-serif; background: linear-gradient(to bottom, #1e1b2e, #2e2649); color: #f4e2d8; margin: 0; min-height: 100vh;">
     <Navbar />
-    <main style="padding: 2rem; max-width: 600px; margin: auto; text-align: center;">
-      <h1 style="font-size: 2rem;">🃏 Tu carta del día</h1>
+    <main style="padding: 2rem; max-width: 700px; margin: auto; text-align: center;">
+      <h1>🃏 Tu carta del día</h1>
+      <p style="margin-top: 1rem; font-size: 1.2rem;">La carta que te acompaña hoy es:</p>
 
-      {!carta && (
-        <button
-          onClick={() => obtenerCarta()}
-          style="margin-top: 1.5rem; padding: 0.75rem 1.5rem; border: none;
-                 background-color: #f4e2d8; color: #2e2649; border-radius: 8px;
-                 font-size: 1rem; cursor: pointer;">
-          Dame la carta del día
-        </button>
-      )}
+      <div style="margin-top: 2rem; background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px;">
+        <h2>{carta.nombre}</h2>
+        <p><strong>Significado:</strong> {carta.significado}</p>
+        <p><em>{carta.consejo}</em></p>
+      </div>
 
-      {carta && (
-        <div style="margin-top: 2rem; background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px;">
-          <h2 style="margin-bottom: 0.5rem;">{carta.nombre}</h2>
-          <p><strong>Significado:</strong> {carta.descripcion}</p>
-          <p><strong>Consejo:</strong> <em>{carta.consejo}</em></p>
-        </div>
-      )}
+      <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">* Recibirás una carta distinta mañana ✨</p>
     </main>
   </body>
 </html>
