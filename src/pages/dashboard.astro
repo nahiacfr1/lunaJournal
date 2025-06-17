@@ -1,13 +1,39 @@
 ---
-import Dashboard from "../components/Dashboard.jsx";
+import Navbar from '../components/Navbar.astro';
 ---
 
 <html lang="es">
   <head>
-    <title>Tu espacio espiritual – Luna Journal</title>
-    <meta name="description" content="Bienvenida a tu espacio espiritual personalizado: consulta tu carta del día, sigue el ciclo lunar y manifiesta tus deseos.">
+    <title>Tu espacio – Luna Journal</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="/dashboard.js" defer></script>
+    <link rel="stylesheet" href="/dashboard.css" />
   </head>
+
   <body>
-    <Dashboard />
+    <Navbar />
+
+    <main class="dashboard-main">
+      <section class="dashboard-box">
+        <h1>🌕 Hola, <span id="username">alma</span></h1>
+        <p>Este es tu espacio espiritual</p>
+
+        <div class="dashboard-links">
+          <a class="card" href="/carta-dia">
+            🔮 <strong>Carta del Día</strong>
+            <p>Tu guía diaria</p>
+          </a>
+          <a class="card" href="/ciclo-lunar">
+            🌙 <strong>Ciclo Lunar</strong>
+            <p>Conecta con las fases</p>
+          </a>
+          <a class="card" href="/manifestar">
+            🌠 <strong>Manifestar</strong>
+            <p>Escribe tus deseos</p>
+          </a>
+        </div>
+      </section>
+    </main>
   </body>
 </html>

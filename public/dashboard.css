@@ -1,0 +1,62 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #1e1b2e, #2e2649);
+  color: #f4e2d8;
+  margin: 0;
+}
+
+.dashboard-main {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 1rem;
+}
+
+.dashboard-box {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+}
+
+.dashboard-box h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-box p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.card {
+  background: #2b2342;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 250px;
+  color: #f4e2d8;
+  text-decoration: none;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card strong {
+  display: block;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.card p {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
