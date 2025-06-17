@@ -1,46 +1,66 @@
 ---
+import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar.astro';
-import fs from 'fs';
-const cartasData = JSON.parse(await fs.promises.readFile('./public/cartas_tarot_es.json', 'utf-8'));
+
+const [carta, setCarta] = useState(null);
+
+useEffect(() => {
+  const guardada = localStorage.getItem('cartaDia');
+  const fechaGuardada = localStorage.getItem('fechaCarta');
+  const hoy = new Date().toISOString().slice(0, 10);
+
+  if (guardada && fechaGuardada === hoy) {
+    setCarta(JSON.parse(guardada));
+  }
+}, []);
+
+const obtenerCarta = async () => {
+  const hoy = new Date().toISOString().slice(0, 10);
+
+  const res = await fetch('/cartas_tarot_es.json');
+  const cartas = await res.json();
+  const aleatoria = cartas[Math.floor(Math.random() * cartas.length)];
+
+  localStorage.setItem('cartaDia', JSON.stringify(aleatoria));
+  localStorage.setItem('fechaCarta', hoy);
+
+  setCarta(aleatoria);
+};
 ---
 
 <html lang="es">
   <head>
     <title>Carta del Día – Luna Journal</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="/carta-dia.css" />
   </head>
-  <body>
+  <body style="
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #1e1b2e, #2e2649);
+    color: #f4e2d8;
+    margin: 0;
+    min-height: 100vh;
+  ">
     <Navbar />
+    <main style="padding: 2rem; max-width: 600px; margin: auto; text-align: center;">
+      <h1 style="font-size: 2rem;">🃏 Tu carta del día</h1>
 
-    <main class="carta-main">
-      <h1>🔮 Carta del Día</h1>
-      <p>Conecta con la energía del tarot. Haz clic y deja que el universo hable contigo.</p>
+      {!carta && (
+        <button
+          onClick={() => obtenerCarta()}
+          style="margin-top: 1.5rem; padding: 0.75rem 1.5rem; border: none;
+                 background-color: #f4e2d8; color: #2e2649; border-radius: 8px;
+                 font-size: 1rem; cursor: pointer;">
+          Dame la carta del día
+        </button>
+      )}
 
-      <button id="sacar-carta">Dame la carta del día</button>
-
-      <div id="resultado" class="carta-resultado oculto">
-        <h2 id="nombre-carta"></h2>
-        <p id="descripcion-carta"></p>
-        <blockquote id="consejo-carta"></blockquote>
-      </div>
-
-      <script type="module">
-        const cartas = JSON.parse(decodeURIComponent(`{{ encodeURIComponent(JSON.stringify(cartasData)) }}`));
-        const boton = document.getElementById("sacar-carta");
-        const resultado = document.getElementById("resultado");
-        const nombre = document.getElementById("nombre-carta");
-        const descripcion = document.getElementById("descripcion-carta");
-        const consejo = document.getElementById("consejo-carta");
-
-        boton.addEventListener("click", () => {
-          const aleatoria = cartas[Math.floor(Math.random() * cartas.length)];
-          nombre.textContent = aleatoria.nombre;
-          descripcion.textContent = aleatoria.descripcion;
-          consejo.textContent = "💫 Consejo: " + aleatoria.consejo;
-          resultado.classList.remove("oculto");
-        });
-      </script>
+      {carta && (
+        <div style="margin-top: 2rem; background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px;">
+          <h2 style="margin-bottom: 0.5rem;">{carta.nombre}</h2>
+          <p><strong>Significado:</strong> {carta.descripcion}</p>
+          <p><strong>Consejo:</strong> <em>{carta.consejo}</em></p>
+        </div>
+      )}
     </main>
   </body>
 </html>
