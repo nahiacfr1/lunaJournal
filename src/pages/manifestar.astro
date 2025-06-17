@@ -1,0 +1,68 @@
+---
+import Navbar from '../components/Navbar.astro';
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Manifestar – Luna Journal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, #1f1b2e, #2f2442);
+        font-family: 'Poppins', sans-serif;
+        color: #fbeff7;
+      }
+
+      main {
+        padding: 2rem;
+        max-width: 700px;
+        margin: auto;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .botones {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+
+      .boton {
+        background-color: #fbeff7;
+        color: #3d2c50;
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        font-weight: bold;
+        font-size: 1.2rem;
+        text-decoration: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        transition: transform 0.2s ease, background-color 0.3s;
+      }
+
+      .boton:hover {
+        transform: scale(1.05);
+        background-color: #fff0f7;
+      }
+    </style>
+  </head>
+  <body>
+    <Navbar />
+
+    <main>
+      <h1>✨ Manifestar tus deseos</h1>
+      <div class="botones">
+        <a class="boton" href="/carta-al-universo">💌 Carta al Universo</a>
+        <a class="boton" href="/metodo-369">🧿 Método 369</a>
+        <a class="boton" href="/visualizacion">🌈 Visualización Creativa</a>
+        <a class="boton" href="/ley-atraccion">💫 Ley de Atracción</a>
+      </div>
+    </main>
+  </body>
+</html>
