@@ -1,0 +1,46 @@
+---
+import Navbar from '../components/Navbar.astro';
+import fs from 'fs';
+const cartasData = JSON.parse(await fs.promises.readFile('./public/cartas_tarot_es.json', 'utf-8'));
+---
+
+<html lang="es">
+  <head>
+    <title>Carta del Día – Luna Journal</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/carta-dia.css" />
+  </head>
+  <body>
+    <Navbar />
+
+    <main class="carta-main">
+      <h1>🔮 Carta del Día</h1>
+      <p>Conecta con la energía del tarot. Haz clic y deja que el universo hable contigo.</p>
+
+      <button id="sacar-carta">Dame la carta del día</button>
+
+      <div id="resultado" class="carta-resultado oculto">
+        <h2 id="nombre-carta"></h2>
+        <p id="descripcion-carta"></p>
+        <blockquote id="consejo-carta"></blockquote>
+      </div>
+
+      <script type="module">
+        const cartas = JSON.parse(decodeURIComponent(`{{ encodeURIComponent(JSON.stringify(cartasData)) }}`));
+        const boton = document.getElementById("sacar-carta");
+        const resultado = document.getElementById("resultado");
+        const nombre = document.getElementById("nombre-carta");
+        const descripcion = document.getElementById("descripcion-carta");
+        const consejo = document.getElementById("consejo-carta");
+
+        boton.addEventListener("click", () => {
+          const aleatoria = cartas[Math.floor(Math.random() * cartas.length)];
+          nombre.textContent = aleatoria.nombre;
+          descripcion.textContent = aleatoria.descripcion;
+          consejo.textContent = "💫 Consejo: " + aleatoria.consejo;
+          resultado.classList.remove("oculto");
+        });
+      </script>
+    </main>
+  </body>
+</html>

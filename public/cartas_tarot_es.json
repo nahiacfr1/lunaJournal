@@ -1,0 +1,52 @@
+[
+  {
+    "nombre": "El Loco",
+    "descripcion": "Representa los inicios, la libertad y la confianza en el camino desconocido.",
+    "consejo": "Abraza lo nuevo sin miedo, tu alma ya conoce el sendero."
+  },
+  {
+    "nombre": "El Mago",
+    "descripcion": "Simboliza poder personal, creatividad y acción consciente.",
+    "consejo": "Tienes todo lo que necesitas. Cree en tu magia interior."
+  },
+  {
+    "nombre": "La Suma Sacerdotisa",
+    "descripcion": "Guarda los secretos del alma y te invita a escuchar tu intuición.",
+    "consejo": "Lo más valioso está dentro de ti. Haz silencio y escucha."
+  },
+  {
+    "nombre": "La Emperatriz",
+    "descripcion": "Energía fértil, amorosa y creadora. Conexión con la naturaleza y lo femenino.",
+    "consejo": "Cuida lo que amas y florecerá."
+  },
+  {
+    "nombre": "El Emperador",
+    "descripcion": "Simboliza estructura, protección y liderazgo consciente.",
+    "consejo": "Toma las riendas desde el corazón, no desde el control."
+  },
+  {
+    "nombre": "El Hierofante",
+    "descripcion": "Representa la sabiduría espiritual, tradición y guía interior.",
+    "consejo": "Aprende de la experiencia, pero no olvides tu verdad."
+  },
+  {
+    "nombre": "Los Enamorados",
+    "descripcion": "Decisiones desde el corazón, amor y conexiones auténticas.",
+    "consejo": "Elige siempre lo que te haga vibrar de verdad."
+  },
+  {
+    "nombre": "El Carro",
+    "descripcion": "Impulso, movimiento y determinación alineada con el alma.",
+    "consejo": "Dirige tu energía con claridad y alcanzarás tu destino."
+  },
+  {
+    "nombre": "La Fuerza",
+    "descripcion": "Poder interior, compasión y dominio emocional.",
+    "consejo": "Tu ternura es tu mayor fortaleza."
+  },
+  {
+    "nombre": "El Ermitaño",
+    "descripcion": "Sabiduría interior, introspección y búsqueda de sentido.",
+    "consejo": "Apaga el ruido. La luz que buscas está dentro de ti."
+  }
+]
