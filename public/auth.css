@@ -42,13 +42,33 @@ body {
   cursor: pointer;
 }
 
-.auth-box .alt {
-  margin-top: 1rem;
-  font-size: 0.95rem;
-}
-
 .error-msg {
   color: #ffb3b3;
   font-size: 0.9rem;
   margin-top: 0.5rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1.5rem;
+}
+
+.tabs button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #f4e2d8;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-bottom: 2px solid transparent;
+}
+
+.tabs button.active {
+  border-bottom: 2px solid #ffccf2;
+  font-weight: bold;
 }

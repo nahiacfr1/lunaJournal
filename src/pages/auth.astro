@@ -16,20 +16,25 @@ import Navbar from '../components/Navbar.astro';
 
     <main class="auth-main">
       <section class="auth-box">
-        <h1>🔒 Iniciar sesión</h1>
-        <p>Accede a tu espacio espiritual</p>
+        <div class="tabs">
+          <button id="login-tab" class="active">Iniciar sesión</button>
+          <button id="register-tab">Crear cuenta</button>
+        </div>
 
-        <form id="login-form">
-          <input type="email" id="email" placeholder="Correo electrónico" required />
-          <input type="password" id="password" placeholder="Contraseña" required />
+        <form id="login-form" class="form-tab">
+          <input type="email" id="login-email" placeholder="Correo electrónico" required />
+          <input type="password" id="login-password" placeholder="Contraseña" required />
           <button type="submit">Entrar</button>
-          <p id="error" class="error-msg"></p>
+          <p id="login-error" class="error-msg"></p>
         </form>
 
-        <p class="alt">¿No tienes cuenta? <a href="#" onclick="toggleRegister()">Regístrate</a></p>
+        <form id="register-form" class="form-tab hidden">
+          <input type="email" id="register-email" placeholder="Correo electrónico" required />
+          <input type="password" id="register-password" placeholder="Contraseña" required />
+          <button type="submit">Registrarse</button>
+          <p id="register-error" class="error-msg"></p>
+        </form>
       </section>
     </main>
   </body>
 </html>
-
-

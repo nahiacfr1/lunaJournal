@@ -18,28 +18,47 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-const form = document.getElementById("login-form");
-const errorText = document.getElementById("error");
-
-form.addEventListener("submit", async (e) => {
+// 🔐 Login
+document.getElementById("login-form").addEventListener("submit", async (e) => {
   e.preventDefault();
-  const email = document.getElementById("email").value;
-  const pass = document.getElementById("password").value;
+  const email = document.getElementById("login-email").value;
+  const pass = document.getElementById("login-password").value;
+  const error = document.getElementById("login-error");
 
   try {
     await signInWithEmailAndPassword(auth, email, pass);
     window.location.href = "/dashboard";
-  } catch (error) {
-    if (error.code === "auth/user-not-found") {
-      // Crear cuenta si no existe
-      try {
-        await createUserWithEmailAndPassword(auth, email, pass);
-        window.location.href = "/dashboard";
-      } catch (e) {
-        errorText.textContent = "Error al registrar: " + e.message;
-      }
-    } else {
-      errorText.textContent = "Error al iniciar sesión: " + error.message;
-    }
+  } catch (err) {
+    error.textContent = "❌ " + err.message;
   }
+});
+
+// ✍️ Registro
+document.getElementById("register-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = document.getElementById("register-email").value;
+  const pass = document.getElementById("register-password").value;
+  const error = document.getElementById("register-error");
+
+  try {
+    await createUserWithEmailAndPassword(auth, email, pass);
+    window.location.href = "/dashboard";
+  } catch (err) {
+    error.textContent = "❌ " + err.message;
+  }
+});
+
+// 🧭 Tabs
+document.getElementById("login-tab").addEventListener("click", () => {
+  document.getElementById("login-form").classList.remove("hidden");
+  document.getElementById("register-form").classList.add("hidden");
+  document.getElementById("login-tab").classList.add("active");
+  document.getElementById("register-tab").classList.remove("active");
+});
+
+document.getElementById("register-tab").addEventListener("click", () => {
+  document.getElementById("register-form").classList.remove("hidden");
+  document.getElementById("login-form").classList.add("hidden");
+  document.getElementById("register-tab").classList.add("active");
+  document.getElementById("login-tab").classList.remove("active");
 });
