@@ -1,16 +1,42 @@
 ---
-
+// src/pages/index.astro
+import Navbar from '../components/Navbar.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Luna Journal - Horóscopo y Rituales</title>
+    <meta name="description" content="Conecta con tu energía. Explora rituales, afirmaciones y guía espiritual diaria.">
+  </head>
+  <body style="
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #1e1b2e, #2e2649);
+  color: #f4e2d8;
+  margin: 0;
+  min-height: 100vh;">
+
+    <Navbar />
+    <main style="padding: 4rem 2rem; text-align: center;">
+  <h1 style="font-size: 3rem; margin-bottom: 1rem;">🌙 Bienvenida a Luna Journal</h1>
+  <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+    Conecta con tu energía, manifiesta tus deseos y explora rituales espirituales diarios.
+  </p>
+  <div style="margin-top: 3rem;">
+    <a href="/rituales" style="
+      background: #c08ecf;
+      color: #2e2649;
+      padding: 1rem 2rem;
+      border-radius: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: background 0.3s;">
+      🔮 Explorar rituales
+    </a>
+  </div>
+</main>
+
+  </body>
 </html>
+
